@@ -1,1 +1,7 @@
-<%= comment.body %>
+<div class="container rounded col-8 mx-0 p-0">
+    <b><%= User.find(comment.user_id).email %></b><br>
+    <div class="container rounded">
+        <%= comment.body %>
+    </div>
+    <br>
+</div>
