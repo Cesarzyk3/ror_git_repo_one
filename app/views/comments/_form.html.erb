@@ -1,9 +1,9 @@
 <%= form_with model: [@article, @article.comments.build] do |f| %>
     <div>
-        <%= f.text_area :body %>
+        <%= f.text_area :body, class: 'mb-3 form-control' %>
     </div>
 
     <div> 
-        <%= f.submit %>
+        <%= f.submit 'Create Comment', class: 'btn btn-primary' %>
     </div>
 <% end %>
