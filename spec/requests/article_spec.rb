@@ -49,6 +49,14 @@ RSpec.describe "Article", :type => :request do
 
         it "works for an admin" do
             #admin role to be added in the future
+            user = create(:user)
+            article = create(:article, user_id: user.id)
+            admin = create(:user, :admin)
+            sign_in admin
+            expect{
+                delete "/articles/#{article.id}"
+                expect(response).to redirect_to(articles_path)
+            }.to change{Article.all.count}.by(-1)
         end
 
         it "doesn't work for other users" do

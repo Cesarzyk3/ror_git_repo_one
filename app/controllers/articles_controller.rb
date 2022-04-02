@@ -73,6 +73,12 @@ class ArticlesController < ApplicationController
 
     def is_user_authorized?
       if current_user != set_article.user
+        is_user_admin?
+      end
+    end
+
+    def is_user_admin?
+      unless current_user.admin?
         redirect_to root_path
       end
     end
