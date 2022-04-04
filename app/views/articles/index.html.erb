@@ -17,8 +17,14 @@
       <hr>
       <b><%= User.find(article.user_id).email%></b><br>
       <%= link_to 'Show', article, class: 'btn border py-0 px-1' %>
-      <%= link_to 'Edit', edit_article_path(article), class: 'btn border py-0 px-1' %>
-      <%= link_to 'Destroy', article, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn border py-0 px-1' %></td>
+      <% if current_user %>
+        <% if current_user == article.user %>
+          <%= link_to 'Edit', edit_article_path(article), class: 'btn border py-0 px-1' %>
+        <% end %>
+        <% if current_user == article.user || current_user.admin? %>
+          <%= link_to 'Delete', article, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn border py-0 px-1' %></td>
+        <% end %>
+      <% end %>    
     </li>    
   </ul>
   <% end %>

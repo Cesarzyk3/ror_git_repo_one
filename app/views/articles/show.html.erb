@@ -6,15 +6,28 @@
 
     <b><%= User.find(@article.user_id).email %></b><br>
     
-    <%= link_to 'Edit', edit_article_path(@article), class: 'btn border py-0 px-1' %>
-    <%= link_to 'Back', articles_path, class: 'btn border py-0 px-1' %>
+    <% if current_user %>
+      <% if current_user == @article.user %>
+        <%= link_to 'Edit', edit_article_path(@article), class: 'btn border py-0 px-1' %>
+      <% end %>
+      <% if current_user == @article.user || current_user.admin? %>
+        <%= link_to 'Delete', article_path(@article), class: 'btn border py-0 px-1', 
+                                                    data: { confirm: "Are you sure?" }, method: :delete %>
+      <% end %>
+    <% end %>
+    
+    <%= link_to 'Back', articles_path, class: 'btn border py-0 px-1' %>    
   </div>
   
   <hr>
   
-  <div class="container rounded bg-white my-3 col">
-    <p>Comments:</p>
-    <%= render @article.comments %><br>
-    <%= render "comments/form" %>
-  </div>
+  
+
+    <div class="container rounded bg-white my-3 col">
+      <p>Comments:</p>
+      <%= render @article.comments %><br>
+      <% if current_user %>
+        <%= render "comments/form" %>
+      <% end %>
+    </div>
 </div>
