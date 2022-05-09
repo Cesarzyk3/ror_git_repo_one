@@ -61,14 +61,14 @@ RSpec.describe "Article", :type => :request do
         end
     end
 
-    context "index" do
+    context "index page" do
         it "works for everyone" do
             get articles_path
             expect(response).to render_template(:index)
         end
     end
 
-    context "showing" do
+    context "show page" do
         it "works for everyone" do
             get article_path(article)
             expect(response).to render_template(:show)

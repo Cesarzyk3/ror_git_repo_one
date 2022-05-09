@@ -1,5 +1,6 @@
 <div class="container rounded col-8 mx-0 p-0">
-    <b><%= User.find(comment.user_id).email %></b><br>
+    <b><%= link_to User.find(comment.user_id).email, User.find(comment.user_id), 
+                                        class: "text-decoration-none text-reset" %></b><br>
     <div class="container rounded">
         <%= comment.body %>
     </div>

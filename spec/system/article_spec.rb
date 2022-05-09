@@ -25,7 +25,7 @@ RSpec.describe "Article", type: :system do
             sign_in other_user
             visit article_path(article)
             expect(page).not_to have_link('Edit')
-            expect(page).not_to have_link('Destroy')
+            expect(page).not_to have_link('Delete')
         end
 
         it "has comment form for logged user" do

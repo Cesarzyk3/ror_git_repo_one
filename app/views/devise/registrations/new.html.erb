@@ -21,12 +21,12 @@
       <%= f.label :password_confirmation, class: 'form-label' %><br />
       <%= f.password_field :password_confirmation, autocomplete: "new-password", class: 'form-control mb-3' %>
     </div>
-    <div class="actions">
-      <%= f.submit "Sign up", class: 'btn btn-primary' %>
+    <div class="actions text-center">
+      <%= f.submit "Sign up", class: 'btn btn-primary col-4' %>
     </div>
   <% end %>
 
-<div class="mt-2">
+<div class="mt-2 text-center">
   <%= render "devise/shared/links" %>
 </div>
 

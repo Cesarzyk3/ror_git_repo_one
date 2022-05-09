@@ -4,8 +4,8 @@
 
     <p><%= @article.body %></p>
 
-    <b><%= User.find(@article.user_id).email %></b><br>
-    
+    <b><%= link_to User.find(@article.user_id).email, User.find(@article.user_id), 
+                                        class: "text-decoration-none text-reset" %></b><br>    
     <% if current_user %>
       <% if current_user == @article.user %>
         <%= link_to 'Edit', edit_article_path(@article), class: 'btn border py-0 px-1' %>

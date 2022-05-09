@@ -1,0 +1,58 @@
+<% @articles.each do |article| %>
+    <div class="modal" id="modal<%= article.id %>">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title"><%= article.title %></h3>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>
+                        <%= article.body %>
+                    </p>
+                </div>
+                <div class="modal-footer">
+                    <b><%= User.find(article.user_id).email%></b><br>
+                    <%= link_to 'Show', article, class: 'btn border py-0 px-1' %>
+                    <% if current_user %>
+                        <% if current_user == article.user %>
+                            <%= link_to 'Edit', edit_article_path(article), class: 'btn border py-0 px-1' %>
+                        <% end %>
+                        <% if current_user == article.user || current_user.admin? %>
+                            <%= link_to 'Delete', article, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn border py-0 px-1' %></td>
+                        <% end %>
+                    <% end %>    
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <ul class="list-group">
+        <li class="list-group-item active text-white rounded-top pt-2 pb-1 px-2">
+            <h3><%= article.title %></h3>
+        </li>
+        <li class="list-group-item mb-3 rounded-bottom">
+            <b><%= link_to User.find(article.user_id).email, User.find(article.user_id), 
+                                                        class: "text-decoration-none text-reset" %></b><br>
+            <p>
+            <% if article.body.split.size() > 50 %>
+                <%= article.body.truncate(250, separator: ' ') %>
+                <a class="text-decoration-none" data-bs-toggle="modal" href="#modal<%= article.id %>" aria-expanded="false" aria-control="collapse<%= article.id %>">
+                read more
+                </a>
+            <% else %>
+                <%= article.body %>
+            <% end %>
+            </p>
+            <%= link_to 'Show', article, class: 'btn border py-0 px-1' %>
+            <% if current_user %>
+                <% if current_user == article.user %>
+                    <%= link_to 'Edit', edit_article_path(article), class: 'btn border py-0 px-1' %>
+                <% end %>
+                <% if current_user == article.user || current_user.admin? %>
+                    <%= link_to 'Delete', article, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn border py-0 px-1' %></td>
+                <% end %>
+            <% end %>
+        </li>
+    </ul>
+<% end %>
