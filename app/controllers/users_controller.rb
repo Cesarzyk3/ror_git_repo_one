@@ -7,7 +7,10 @@ class UsersController < ApplicationController
   end
 
   def index
-    @users = User.all.group(:id, :email).order(:id).select(:id, :email).left_joins(:articles, :comments).select("COUNT(articles.id) AS article_count").select("COUNT(comments.id) AS comment_count")
+    @users = User.all.group(:id, :email).order(:id).
+    select(:id, :email).left_joins(:articles, :comments).
+    select("COUNT(distinct articles.id) AS article_count, 
+            COUNT(distinct comments.id) AS comment_count")
   end
 
   def destroy
