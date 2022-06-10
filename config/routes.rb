@@ -8,5 +8,6 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :users, only: %i[ show index destroy]
-
+  
+  resources :follows, only: %i[ create destroy ]
 end
