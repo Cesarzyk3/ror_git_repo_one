@@ -1,4 +1,12 @@
 <div class="container col-6">
     <h1><%= @user.email %></h1>
+    <% if current_user && current_user != @user %>
+        <% if current_user.follows_to.find_by(followed_id: @user.id) %>
+            <%= link_to "Unfollow user", follow_path(@user), method: :delete%>
+            <%#= link_to "Follow user", follows_path,  method: :post, params[followed_id: @user.id] %>
+        <% else %>
+            <%= render "follows/form", user: @user %>
+        <% end %>
+    <% end %>
     <%= render 'articles/article' %>
 </div>
