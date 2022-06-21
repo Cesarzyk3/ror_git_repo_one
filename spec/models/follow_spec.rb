@@ -5,7 +5,6 @@ RSpec.describe Follow, type: :model do
   let!(:other_user) { create(:user) }
   
   it "doesn't allow following someone twice" do
-    # yet to be done
     follow = Follow.new(follower: user, followed: other_user)
     follow.save
     expect(follow).to be_valid

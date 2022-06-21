@@ -4,15 +4,13 @@ RSpec.describe "Follows", type: :request do
   let!(:user)         { create(:user) }
   let!(:other_user)   { create(:user) }
   let!(:another_user) { create(:user) }
-  let!(:follow)       { create(:follow, follower: user, followed: another_user)}
+  let!(:follow)       { create(:follow, follower: user, followed: another_user) }
   
   describe "creation" do
     it "works for signed in user" do
       sign_in user
       expect{
-        #byebug
         post follows_path, params: { follow: { followed_id: other_user.id } }
-        #byebug
       }.to change{Follow.all.count}.by(1)
     end
 

@@ -6,6 +6,8 @@ class Follow < ApplicationRecord
   validates_uniqueness_of :followed, scope: :follower
   validate :following_someone_else
 
+  private
+
   def following_someone_else
     if follower == followed
       errors.add(:followed, "Can't follow yourself!")

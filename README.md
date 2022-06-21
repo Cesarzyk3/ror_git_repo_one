@@ -1,24 +1,24 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is my app, to show off my skills in Ruby on Rails
+To get it up and running, please follow the steps below:
 
-Things you may want to cover:
+Switch to Ruby 3.0.3
 
-* Ruby version
+If you don't have PostgreSQL installed, I recommend you do it before following next steps.
 
-* System dependencies
+Next use the commands below:
 
-* Configuration
+rails bundle install
 
-* Database creation
+rails db:create
 
-* Database initialization
+rails db:migrate
 
-* How to run the test suite
+rails db:seed
 
-* Services (job queues, cache servers, search engines, etc.)
+rails s
 
-* Deployment instructions
+If you want to run a test suite, use:
 
-* ...
+bundle exec rspec
