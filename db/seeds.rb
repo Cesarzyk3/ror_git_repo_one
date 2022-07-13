@@ -40,7 +40,7 @@ first_id = Article.create!(
 
     rand(1..5).times do
         Comment.create!(
-            body: Faker::Lorem.sentence(word_count: rand(10..25), supplemental: false,
+            body: Faker::Lorem.sentence(word_count: rand(5..10), supplemental: false,
                                                 random_words_to_add: 0).chop,
             user_id: user.id,
             article: Article.find(rand(first_id..(first_id+index)))                                           
