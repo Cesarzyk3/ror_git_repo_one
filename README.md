@@ -4,6 +4,9 @@ This app is to show my skills in Ruby on Rails.
 
 It allows users to create an account, so they can write articles or comments and follow other accounts. Follow feature enables users to view articles made by followed users on their feed page. There is admin role which allows admin users to view users index page and delete specific users, articles or comments.
 
+If you want to see it in action it's available here:
+https://rails-social-app-bernard.herokuapp.com/
+
 To get it up and running, please follow the steps below.
 
 Switch to Ruby 3.0.3
