@@ -6,9 +6,9 @@ class ArticlesController < ApplicationController
   # GET /articles or /articles.json
   def index
     if(current_user && params[:f] == "following")
-      @articles = Article.feed current_user.following
+      @pagy, @articles = pagy(Article.feed(current_user.following), items: 5)
     else
-      @articles = Article.all
+      @pagy, @articles = pagy(Article.all, items: 5)
     end
   end
 

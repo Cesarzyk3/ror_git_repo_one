@@ -3,6 +3,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '3.0.3'
 gem 'devise'
+gem 'pagy'
 # this app is for demonstration purposes so faker is also included in production
 gem 'faker'
 
@@ -37,7 +38,7 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'factory_bot_rails'
   gem 'rails-controller-testing'
-  gem 'faker'
+  #gem 'faker'
 end
 
 group :development do
